@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "421822141439",
+    "firebase_url": "https://schedule-ece70.firebaseio.com",
+    "project_id": "schedule-ece70",
+    "storage_bucket": "schedule-ece70.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:421822141439:android:2a01521bfb36c226e9cdca",
+        "android_client_info": {
+          "package_name": "com.example.schedule"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "421822141439-ho33vojf6n17h8rv194rs4383qiphgu5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.schedule",
+            "certificate_hash": "52a24d73c14a3f6de4f2184788a3f96d486c13aa"
+          }
+        },
+        {
+          "client_id": "421822141439-1h3d992p8aoenuu8071q66pl6d5efate.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgRI-b712cfjSC4QPmvI69wRubq7ADLZI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "421822141439-1h3d992p8aoenuu8071q66pl6d5efate.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
