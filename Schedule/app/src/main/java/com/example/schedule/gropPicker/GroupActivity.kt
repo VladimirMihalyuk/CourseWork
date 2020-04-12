@@ -1,7 +1,9 @@
 package com.example.schedule.gropPicker
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import androidx.lifecycle.Observer
@@ -11,7 +13,14 @@ import com.example.schedule.app.ScheduleApplication
 import javax.inject.Inject
 import android.widget.ArrayAdapter
 import com.example.schedule.app.getGroupString
+import com.example.schedule.schedule.KEY
+import com.example.schedule.schedule.ScheduleActivity
 import kotlinx.android.synthetic.main.activity_group.*
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+
+
 
 
 
@@ -34,7 +43,16 @@ class GroupActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
         viewModel =ViewModelProvider(this, viewModelFactory).get(GroupViewModel::class.java)
 
+        viewModel.group.observe(this, Observer {
+            if(it != null){
 
+                val intent = Intent(this, ScheduleActivity::class.java)
+                intent.putExtra(KEY, it)
+                viewModel.resetGroup()
+
+                startActivity(intent)
+            }
+        })
 
         viewModel.map.observe(this, Observer { map ->
             course.adapter = makeAdapter(map.keys.toList().map{"$it курс" })
@@ -58,7 +76,7 @@ class GroupActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         viewModel.getGroups()
 
         pick.setOnClickListener {
-
+            viewModel.pickGroup(course.selectedItem.toString(), group.selectedItem.toString())
         }
     }
 
@@ -78,12 +96,12 @@ class GroupActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         return arrayAdapter
     }
 
-    fun startLoading(){
+    private fun startLoading(){
         constraintLayout.visibility = View.INVISIBLE
         progressBar.visibility = View.VISIBLE
     }
 
-    fun stopLoading(){
+    private fun stopLoading(){
         constraintLayout.visibility = View.VISIBLE
         progressBar.visibility = View.INVISIBLE
     }

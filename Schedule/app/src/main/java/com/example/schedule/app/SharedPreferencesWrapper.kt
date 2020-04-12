@@ -26,7 +26,7 @@ class SharedPreferencesWrapper(private val application: Application){
         editor.apply()
     }
 
-    fun getToken(): Group?{
+    fun getGroup(): Group?{
         val group = sharedPreferences.getInt(GROUP_KEY, 0)
         val department = sharedPreferences.getString(DEPARTMENT_KEY, null)
         val course = sharedPreferences.getInt(COURSE_KEY, 0)
