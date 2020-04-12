@@ -1,7 +1,7 @@
 package com.example.schedule.di
 
 import android.app.Application
-import com.example.schedule.MainActivity
+import com.example.schedule.gropPicker.GroupActivity
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -9,10 +9,10 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = [
     SharedPreferencesModule::class,
-    FireStorekModule::class,
+    FireStoreModule::class,
     ViewModelModule::class])
 interface AppComponent {
-    fun inject(target: MainActivity)
+    fun inject(target: GroupActivity)
 //
 //    fun inject(target: AllRunsFragment)
 //

@@ -2,9 +2,11 @@ package com.example.schedule.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.schedule.gropPicker.GroupViewModel
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module
+import dagger.multibindings.IntoMap
 import javax.inject.Inject
 import javax.inject.Provider
 import javax.inject.Singleton
@@ -28,11 +30,11 @@ abstract class ViewModelModule {
     @Binds
     internal abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
 
-//    @Binds
-//    @IntoMap
-//    @ViewModelKey(LoggingViewModel::class)
-//    internal abstract fun loggingViewModel(viewModel: LoggingViewModel): ViewModel
-//
+    @Binds
+    @IntoMap
+    @ViewModelKey(GroupViewModel::class)
+    internal abstract fun loggingViewModel(viewModel: GroupViewModel): ViewModel
+
 //    @Binds
 //    @IntoMap
 //    @ViewModelKey(AllRunsViewModel::class)
