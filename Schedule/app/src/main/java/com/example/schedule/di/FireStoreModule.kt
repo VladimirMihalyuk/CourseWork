@@ -6,11 +6,8 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class FireStorekModule {
-
+class FireStoreModule {
     @Provides
     @Singleton
     fun provideFireStore() = FireStore()
-
-
 }

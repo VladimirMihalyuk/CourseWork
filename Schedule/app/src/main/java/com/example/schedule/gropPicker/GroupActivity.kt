@@ -1,24 +1,24 @@
-package com.example.schedule
+package com.example.schedule.gropPicker
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.example.schedule.R
 import com.example.schedule.app.ScheduleApplication
 import com.example.schedule.firestore.FireStore
 import com.example.schedule.firestore.Group
 import com.example.schedule.firestore.Lesson
-import com.google.firebase.firestore.QuerySnapshot
 import java.lang.Exception
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+class GroupActivity : AppCompatActivity() {
 
     @Inject
     lateinit var fireStore: FireStore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_group)
 
         (application as ScheduleApplication).appComponent.inject(this)
 
