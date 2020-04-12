@@ -45,9 +45,21 @@ class GroupActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             }
         })
 
+        viewModel.isLoading.observe(this, Observer {
+            if(it == true){
+                startLoading()
+            }else{
+                stopLoading()
+            }
+        })
+
         course.onItemSelectedListener = this
 
         viewModel.getGroups()
+
+        pick.setOnClickListener {
+
+        }
     }
 
     override fun onItemSelected(parent: AdapterView<*>, view: View, pos: Int, id: Long) {

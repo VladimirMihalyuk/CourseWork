@@ -17,12 +17,18 @@ class GroupViewModel @Inject constructor(
     val map: LiveData<Map<Int, List<Group>>>
         get() = _map
 
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean>
+        get() = _isLoading
+
     fun getGroups(){
+        _isLoading.value = true
         db.getGroups({list: List<Group> -> processList(list)}, {})
     }
 
     private fun processList(list: List<Group>){
-           _map.value = list.groupBy { it.course }
+        _map.value = list.groupBy { it.course }
+        _isLoading.value = false
     }
 
     fun getGroupsForCourse(course: Int):List<Group>{

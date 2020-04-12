@@ -2,10 +2,13 @@ package com.example.schedule.app
 
 import android.app.Application
 import android.content.SharedPreferences
+import com.example.schedule.firestore.Group
 
 
 private val SPNAME = "MyPref"
-private val LOGIN_KEY = "LOGIN_KEY"
+private val GROUP_KEY = "LOGIN_KEY"
+private val DEPARTMENT_KEY = "DEPARTMENT_KEY"
+private val COURSE_KEY = "COURSE_KEY"
 
 class SharedPreferencesWrapper(private val application: Application){
 
@@ -15,12 +18,23 @@ class SharedPreferencesWrapper(private val application: Application){
         sharedPreferences = application.getSharedPreferences(SPNAME, 0)
     }
 
-    fun setToken(token: String){
+    fun setGroup(group: Group){
         val editor = sharedPreferences.edit()
-        editor.putString(LOGIN_KEY, token)
+        editor.putInt(GROUP_KEY, group.group)
+        editor.putString(DEPARTMENT_KEY, group.department)
+        editor.putInt(COURSE_KEY, group.course)
         editor.apply()
     }
 
-    fun getToken(): String = sharedPreferences.getString(LOGIN_KEY, null) ?: ""
+    fun getToken(): Group?{
+        val group = sharedPreferences.getInt(GROUP_KEY, 0)
+        val department = sharedPreferences.getString(DEPARTMENT_KEY, null)
+        val course = sharedPreferences.getInt(COURSE_KEY, 0)
 
+        if(department != null){
+            return Group(group, department, course)
+        } else {
+            return null
+        }
+    }
 }
