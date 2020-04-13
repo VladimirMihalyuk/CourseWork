@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 
 import com.example.schedule.R
@@ -56,7 +57,13 @@ class ScheduleFragment : Fragment() {
             ViewModelProvider((activity as ScheduleActivity), viewModelFactory)
                 .get(ScheduleViewModel::class.java)
 
-        viewModel.getLessons(message)
+        viewModel.getLessons(message).observe(viewLifecycleOwner, Observer {
+            if(it == null || it.isEmpty()){
+                lessons.visibility = View.VISIBLE
+            }else{
+                
+            }
+        })
 
         date.text = message.getDate()
     }

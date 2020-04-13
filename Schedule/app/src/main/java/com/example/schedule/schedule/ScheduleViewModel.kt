@@ -3,11 +3,13 @@ package com.example.schedule.schedule
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.example.schedule.app.getDayOfWeek
 import com.example.schedule.firestore.FireStore
 import com.example.schedule.firestore.Group
 import com.example.schedule.firestore.Lesson
+import java.util.Locale.filter
 import javax.inject.Inject
 
 class ScheduleViewModel @Inject constructor( private val db: FireStore): ViewModel() {
@@ -28,8 +30,9 @@ class ScheduleViewModel @Inject constructor( private val db: FireStore): ViewMod
         _map.postValue(list.groupBy{it.dayOfWeek})
     }
 
-    fun getLessons(time: Long){
+    fun getLessons(time: Long): LiveData<List<Lesson>?> {
         val date = (time / 86400000) * 86400000
-        Log.d("WTF", "${date.getDayOfWeek()}")
+        return Transformations.map(_map){
+            it.get(date.getDayOfWeek())?.filter { date >= it.dateStart && date <= it.dateEnd }}
     }
 }
