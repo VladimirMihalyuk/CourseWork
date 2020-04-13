@@ -30,21 +30,26 @@ class ScheduleActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_schedule)
 
+        (application as ScheduleApplication).appComponent.inject(this)
+
+        viewModel =
+            ViewModelProvider(this, viewModelFactory).get(ScheduleViewModel::class.java)
+
         val group = intent.getParcelableExtra<Group>(KEY)
 
         if(group != null){
-
+            viewModel.setGroup(group)
         }
 
-        (application as ScheduleApplication).appComponent.inject(this)
+
+        viewModel.getSchedule()
 
         demoCollectionPagerAdapter = DemoCollectionPagerAdapter(supportFragmentManager)
         pager.adapter = demoCollectionPagerAdapter
+
+
     }
 }
-
-
-
 
 class DemoCollectionPagerAdapter(fm: FragmentManager)
     :  FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT)  {
@@ -59,6 +64,4 @@ class DemoCollectionPagerAdapter(fm: FragmentManager)
         return fragment
     }
 }
-
-private const val ARG_OBJECT = "object"
 

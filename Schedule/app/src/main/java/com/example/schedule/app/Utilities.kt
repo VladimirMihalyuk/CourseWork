@@ -19,3 +19,10 @@ fun Long.getDate(): String {
 
     return formatter.format(calendar.time)
 }
+
+fun Long.getDayOfWeek(): String{
+    val formatter = SimpleDateFormat("EEEE", Locale.ENGLISH)
+    val calendar = Calendar.getInstance()
+    calendar.timeInMillis = this
+    return formatter.format(calendar.time)
+}

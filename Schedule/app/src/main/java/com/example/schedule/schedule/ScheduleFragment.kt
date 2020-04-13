@@ -7,10 +7,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 
 import com.example.schedule.R
+import com.example.schedule.app.ScheduleApplication
 import com.example.schedule.app.getDate
 import kotlinx.android.synthetic.main.fragment_schedule.*
+import javax.inject.Inject
 
 /**
  * A simple [Fragment] subclass.
@@ -31,6 +34,10 @@ class ScheduleFragment : Fragment() {
     }
 
 
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+    lateinit var viewModel: ScheduleViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,10 +49,16 @@ class ScheduleFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val message = arguments?.getLong(KEY_TEXT) ?: 0
 
+        ((activity as ScheduleActivity).application as ScheduleApplication)
+            .appComponent.inject(this)
+
+        viewModel =
+            ViewModelProvider((activity as ScheduleActivity), viewModelFactory)
+                .get(ScheduleViewModel::class.java)
+
+        viewModel.getLessons(message)
 
         date.text = message.getDate()
-
-        Log.d("WTF", "$message")
     }
 
 }

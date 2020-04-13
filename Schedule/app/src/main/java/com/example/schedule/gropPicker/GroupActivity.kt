@@ -15,15 +15,6 @@ import com.example.schedule.schedule.KEY
 import com.example.schedule.schedule.ScheduleActivity
 import kotlinx.android.synthetic.main.activity_group.*
 
-
-
-
-
-
-
-
-
-
 class GroupActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     @Inject

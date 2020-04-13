@@ -32,7 +32,7 @@ class SharedPreferencesWrapper(private val application: Application){
         val course = sharedPreferences.getInt(COURSE_KEY, 0)
 
         if(department != null){
-            return Group(group, department, course)
+            return Group(course, department, group)
         } else {
             return null
         }
