@@ -33,6 +33,7 @@ class ScheduleViewModel @Inject constructor( private val db: FireStore): ViewMod
     fun getLessons(time: Long): LiveData<List<Lesson>?> {
         val date = (time / 86400000) * 86400000
         return Transformations.map(_map){
-            it.get(date.getDayOfWeek())?.filter { date >= it.dateStart && date <= it.dateEnd }}
+            it[date.getDayOfWeek()]?.filter { date >= it.dateStart && date <= it.dateEnd }?.
+                sortedBy { it.timeStart }}
     }
 }

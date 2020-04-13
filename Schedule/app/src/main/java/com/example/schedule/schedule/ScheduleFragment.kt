@@ -38,6 +38,7 @@ class ScheduleFragment : Fragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     lateinit var viewModel: ScheduleViewModel
+    lateinit var adaptor: ScheduleAdaptor
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,11 +58,16 @@ class ScheduleFragment : Fragment() {
             ViewModelProvider((activity as ScheduleActivity), viewModelFactory)
                 .get(ScheduleViewModel::class.java)
 
+        adaptor = ScheduleAdaptor()
+        list.adapter = adaptor
+
+
+
         viewModel.getLessons(message).observe(viewLifecycleOwner, Observer {
             if(it == null || it.isEmpty()){
                 lessons.visibility = View.VISIBLE
             }else{
-                
+                adaptor.submitList(it)
             }
         })
 
