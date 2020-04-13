@@ -2,6 +2,7 @@ package com.example.schedule.di
 
 import android.app.Application
 import com.example.schedule.gropPicker.GroupActivity
+import com.example.schedule.schedule.ScheduleActivity
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -13,10 +14,8 @@ import javax.inject.Singleton
     ViewModelModule::class])
 interface AppComponent {
     fun inject(target: GroupActivity)
-//
-//    fun inject(target: AllRunsFragment)
-//
-//    fun inject(target: AddNewRunOrUpdateFragment)
+
+    fun inject(target: ScheduleActivity)
 
     @Component.Builder
     interface Builder {

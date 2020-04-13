@@ -16,6 +16,6 @@ fun Long.getDate(): String {
     val formatter = SimpleDateFormat("EEEE dd.MM.yyyy", Locale.getDefault())
     val calendar = Calendar.getInstance()
     calendar.timeInMillis = this
-    
+
     return formatter.format(calendar.time)
 }

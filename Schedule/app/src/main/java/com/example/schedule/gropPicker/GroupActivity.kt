@@ -3,12 +3,10 @@ package com.example.schedule.gropPicker
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-
 import com.example.schedule.app.ScheduleApplication
 import javax.inject.Inject
 import android.widget.ArrayAdapter
@@ -16,9 +14,6 @@ import com.example.schedule.app.getGroupString
 import com.example.schedule.schedule.KEY
 import com.example.schedule.schedule.ScheduleActivity
 import kotlinx.android.synthetic.main.activity_group.*
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 
 
 
@@ -41,15 +36,13 @@ class GroupActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
         (application as ScheduleApplication).appComponent.inject(this)
 
-        viewModel =ViewModelProvider(this, viewModelFactory).get(GroupViewModel::class.java)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(GroupViewModel::class.java)
 
         viewModel.group.observe(this, Observer {
             if(it != null){
-
                 val intent = Intent(this, ScheduleActivity::class.java)
                 intent.putExtra(KEY, it)
                 viewModel.resetGroup()
-
                 startActivity(intent)
             }
         })
