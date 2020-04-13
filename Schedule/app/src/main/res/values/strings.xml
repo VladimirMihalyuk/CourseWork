@@ -2,4 +2,8 @@
     <string name="app_name">Schedule</string>
     <string name="choose_group">Выберете группу</string>
     <string name="go_to_schedule">Перейти к расписанию</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="today_no_lessons">Сегодня нет занятий</string>
 </resources>

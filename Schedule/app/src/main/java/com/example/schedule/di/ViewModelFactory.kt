@@ -3,6 +3,7 @@ package com.example.schedule.di
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.schedule.gropPicker.GroupViewModel
+import com.example.schedule.schedule.ScheduleViewModel
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module
@@ -35,13 +36,8 @@ abstract class ViewModelModule {
     @ViewModelKey(GroupViewModel::class)
     internal abstract fun loggingViewModel(viewModel: GroupViewModel): ViewModel
 
-//    @Binds
-//    @IntoMap
-//    @ViewModelKey(AllRunsViewModel::class)
-//    internal abstract fun allRunsViewModel(viewModel: AllRunsViewModel): ViewModel
-//
-//    @Binds
-//    @IntoMap
-//    @ViewModelKey(AddNewRunOrUpdateFragmentViewModel::class)
-//    internal abstract fun addNewRunOrUpdateFragmentViewModel(viewModel: AddNewRunOrUpdateFragmentViewModel): ViewModel
+    @Binds
+    @IntoMap
+    @ViewModelKey(ScheduleViewModel::class)
+    internal abstract fun allRunsViewModel(viewModel: ScheduleViewModel): ViewModel
 }
