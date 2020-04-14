@@ -1,13 +1,11 @@
-package com.example.schedule.gropPicker
+package com.example.schedule.groupPicker
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.schedule.app.SharedPreferencesWrapper
 import com.example.schedule.firestore.FireStore
 import com.example.schedule.firestore.Group
-import com.example.schedule.firestore.Lesson
 import java.lang.NumberFormatException
 import javax.inject.Inject
 

@@ -2,8 +2,6 @@ package com.example.schedule.schedule
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.SparseArray
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
@@ -11,7 +9,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.schedule.R
 import com.example.schedule.app.ScheduleApplication
 import com.example.schedule.firestore.Group
-import com.example.schedule.gropPicker.GroupViewModel
 import kotlinx.android.synthetic.main.activity_schedule.*
 import javax.inject.Inject
 

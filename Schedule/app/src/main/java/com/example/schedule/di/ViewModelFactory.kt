@@ -2,7 +2,7 @@ package com.example.schedule.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.schedule.gropPicker.GroupViewModel
+import com.example.schedule.groupPicker.GroupViewModel
 import com.example.schedule.schedule.ScheduleViewModel
 import dagger.Binds
 import dagger.MapKey

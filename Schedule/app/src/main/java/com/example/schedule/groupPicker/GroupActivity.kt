@@ -1,4 +1,4 @@
-package com.example.schedule.gropPicker
+package com.example.schedule.groupPicker
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.schedule.app.ScheduleApplication
 import javax.inject.Inject
 import android.widget.ArrayAdapter
+import com.example.schedule.R
 import com.example.schedule.app.getGroupString
 import com.example.schedule.schedule.KEY
 import com.example.schedule.schedule.ScheduleActivity
@@ -74,7 +75,7 @@ class GroupActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private fun makeAdapter(list: List<String>): ArrayAdapter<String>{
         val arrayAdapter =
             ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item,
+                R.layout.spinner_item,
                 list)
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         return arrayAdapter

@@ -1,7 +1,7 @@
 package com.example.schedule.di
 
 import android.app.Application
-import com.example.schedule.gropPicker.GroupActivity
+import com.example.schedule.groupPicker.GroupActivity
 import com.example.schedule.schedule.ScheduleActivity
 import com.example.schedule.schedule.ScheduleFragment
 import dagger.BindsInstance
