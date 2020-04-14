@@ -7,12 +7,13 @@
     android:orientation="vertical"
     tools:context=".schedule.ScheduleFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:id="@+id/lessons"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/today_no_lessons"
+        android:fontFamily="@font/roboto_medium"
+        android:textColor="@color/primaryColor"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,9 +24,13 @@
         android:id="@+id/date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/textlines"
+        android:fontFamily="@font/roboto_medium"
+        android:textColor="@color/primaryColor"
         android:gravity="center"
         android:padding="8dp"
         android:text="@string/hello_blank_fragment"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
